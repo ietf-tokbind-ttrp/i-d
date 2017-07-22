@@ -1,6 +1,6 @@
 # HTTPS Token Binding with TLS Terminating Reverse Proxies
 
-This is the working area for the IETF Token Binding WG's HTTPS Token Binding with TLS Terminating Reverse Proxies
+This is the working area for the IETF Token Binding Working Group's draft specfication of HTTPS Token Binding with TLS Terminating Reverse Proxies
 
 Be aware that all contributions to the specification fall under the "NOTE WELL"
 terms outlined below.
