@@ -7,7 +7,7 @@ terms outlined below.
 
 This [link yields an HTML rendering of the editors' draft](https://xml2rfc.tools.ietf.org/cgi-bin/xml2rfc.cgi?input=&url=https%3A%2F%2Fraw.githubusercontent.com%2Fietf-tokbind-ttrp%2Fi-d%2Fmaster%2Fdraft-ietf-tokbind-ttrp.xml&modeAsFormat=html%2Fascii&type=ascii&Submit=Submit) from the latest xml source (or [text rendering](https://xml2rfc.tools.ietf.org/cgi-bin/xml2rfc.cgi?input=&url=https%3A%2F%2Fraw.githubusercontent.com%2Fietf-tokbind-ttrp%2Fi-d%2Fmaster%2Fdraft-ietf-tokbind-ttrp.xml&modeAsFormat=txt%2Fascii&type=ascii&Submit=Submit), if you prefer). Additional Working Group links follow.
 
-* Working Group Draft TBD
+* [Working Group Draft](https://tools.ietf.org/html/draft-ietf-tokbind-ttrp)
 * [Working Group](https://datatracker.ietf.org/wg/tokbind)
 * [Working Group Mailing List](https://www.ietf.org/mailman/listinfo/unbearable)
 
