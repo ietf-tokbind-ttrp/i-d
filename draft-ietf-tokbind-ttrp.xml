@@ -433,31 +433,6 @@
       </t>
     </section>
 
-    <section anchor="TBD" title="Open Issues">
-      <t>
-	<list style="symbols">
-	  <t>
-      During discussions at a side meeting in Chicago (IETF 98) there seemed to be general support for having
-      the TTRP rename the "Sec-Token-Binding" header to something else and
-      pass the full original EncodedTokenBindingMessage to the backend server via a different
-      header (maybe "TTRP-Token-Binding" or something) in addition to the "Provided-Token-Binding-ID"
-      and if applicable the "Referred-Token-Binding-ID" headers defined herein. The idea was largely that the
-      backend server "might need it for something" so pass the whole thing along just in case.
-      However, as I sat down to write this draft, I couldn't bring myself to add it in the main text.
-      On thinking about it more, it feels inefficient/duplicative and rather inelegant.
-      And without the EKM, much
-      of the data not already made available via the Token Binding IDs is meaningless (e.g. the signature value).
-      Data in TokenBinding.extensions, if extensions are present, might be useful to the backend server.
-      But might also only be useful/meaningful at the TTRP where the initial TLS connection is terminated.
-      I really don't know. Perhaps any extensions, if present, should be passed to the backend via different
-      header(s)? Or maybe it would be more appropriate to not attempt to cover TokenBinding.extensions in this
-      document and defer to the definition of individual extensions to say how/if they are to be handled in
-      a TTRP type deployment?
-	  </t>
-        </list>
-      </t>
-    </section>
-
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
       <t>
