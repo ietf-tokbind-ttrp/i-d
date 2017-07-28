@@ -319,9 +319,6 @@
         to not use the headers thus requiring an "opt-in" to the functionality.
       </t>
       <t>
-        Reverse proxies SHOULD only add the headers to requests that are forwarded to trusted backend servers.
-      </t>
-      <t>
         Backend servers MUST only accept the headers from trusted reverse proxies.
         And reverse proxies MUST sanitize the incoming request before forwarding it on
         by removing or overwriting any existing instances of the headers.
@@ -438,7 +435,7 @@
       <t>
         draft-ietf-tokbind-ttrp-01
         <list style="symbols">
-          <t></t>
+          <t>Removed potentially confusing sentence from Security Considerations per https://mailarchive.ietf.org/arch/msg/unbearable/O0IpppyyEqMrQjEkyEi8p8CeBGA</t>
         </list>
       </t>
       <t>
