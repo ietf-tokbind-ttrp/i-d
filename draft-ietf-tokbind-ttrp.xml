@@ -85,7 +85,7 @@
         Additional steps are therefore needed to enable the use of
         Token Binding in such deployment architectures. In the absence of a standardized approach,
         different implementations will address it differently, which will make interoperability
-        between implementation difficult or impossible without complex configurations or custom integrations.
+        between such implementations difficult or impossible without complex configurations or custom integrations.
       </t>
       <t>
         This document standardizes
@@ -436,6 +436,7 @@
         draft-ietf-tokbind-ttrp-01
         <list style="symbols">
           <t>Removed potentially confusing sentence from Security Considerations per https://mailarchive.ietf.org/arch/msg/unbearable/O0IpppyyEqMrQjEkyEi8p8CeBGA</t>
+          <t>Editorial fixes.</t>
         </list>
       </t>
       <t>
