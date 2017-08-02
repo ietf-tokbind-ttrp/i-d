@@ -30,8 +30,8 @@
     <keyword>Token Binding</keyword>
     <keyword>Reverse Proxy</keyword>
     <keyword>TLS Termination</keyword>
-    <keyword>Provided-Token-Binding-ID</keyword>
-    <keyword>Referred-Token-Binding-ID</keyword>
+    <keyword>Sec-Provided-Token-Binding-ID</keyword>
+    <keyword>Sec-Referred-Token-Binding-ID</keyword>
 
     <abstract>
       <t>
@@ -119,8 +119,8 @@
           applications to use the Token Binding IDs when generating and verifying
           bound tokens. In the context of a TLS terminating reverse proxy (TTRP)
           deployment, the provided and referred Token Binding IDs are made available
-          to the backend application as the <spanx style="verb">Provided-Token-Binding-ID</spanx>
-          and <spanx style="verb">Referred-Token-Binding-ID</spanx> HTTP headers respectively.
+          to the backend application as the <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx>
+          and <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx> HTTP headers respectively.
           The value of both headers is an <spanx style="verb">EncodedTokenBindingID</spanx>, for which the
           ABNF <xref target="RFC5234"/> syntax is shown in <xref target="abnf"/> below.
           <spanx style="verb">EncodedTokenBindingID</spanx> is a single HTTP header field-value as defined in
@@ -178,21 +178,21 @@
             <t>
               The Token Binding ID of the provided Token Binding of the Token Binding Message
               MUST be placed in the
-              <spanx style="verb">Provided-Token-Binding-ID</spanx>
+              <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx>
               header field of the dispatched request using the format defined in <xref target="headers"/>.
             </t>
             <t>
               If the Token Binding Message contains a referred Token Binding, the referred Token Binding ID
               MUST be placed in the
-              <spanx style="verb">Referred-Token-Binding-ID</spanx>
+              <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx>
               header field of the dispatched request using the format defined in <xref target="headers"/>.
               Otherwise, the
-              <spanx style="verb">Referred-Token-Binding-ID</spanx>
+              <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx>
               header field MUST NOT be present in the dispatched request.
             </t>
             <t>
-              Any occurrence of the <spanx style="verb">Provided-Token-Binding-ID</spanx> or
-              <spanx style="verb">Referred-Token-Binding-ID</spanx>
+              Any occurrence of the <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx> or
+              <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx>
               header in the original incoming request MUST be removed or overwritten before forwarding the request.
             </t>
 
@@ -200,16 +200,16 @@
 
           Requests made over a TLS connection where the use of Token Binding was not negotiated MUST be sanitized
           by removing any occurrences of the
-          <spanx style="verb">Provided-Token-Binding-ID</spanx>
+          <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx>
           and
-          <spanx style="verb">Referred-Token-Binding-ID</spanx>
+          <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx>
           header fields prior to
           dispatching the request to the backend server.
         </t>
         <t>
           Forward proxies and other intermediaries MUST NOT add
-          the <spanx style="verb">Provided-Token-Binding-ID</spanx>
-          or <spanx style="verb">Referred-Token-Binding-ID</spanx> header to requests.
+          the <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx>
+          or <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx> header to requests.
         </t>
       </section>
       <section anchor="examples" title="Examples">
@@ -243,14 +243,14 @@
         <t>
           After validating the Token Binding Message, the TTRP removes the
           <spanx style="verb">Sec-Token-Binding</spanx> header and adds the following
-          <spanx style="verb">Provided-Token-Binding-ID</spanx> header with the
+          <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx> header with the
           provided Token Binding ID to the request that is dispatched to the
           backend server.
         </t>
         <figure title="Header in HTTP Request to Backend Server" anchor="http-to-back-provided">
           <artwork><![CDATA[
- Provided-Token-Binding-ID: AgBBQKzyIrmcY_YCtHVoSHBut69vrGfFdy1_YKTZ
-   fFJv6BjrZsKD9b9FRzSBxDs1twTqnAS71M1RBumuihhI9xqxXKk
+ Sec-Provided-Token-Binding-ID: AgBBQKzyIrmcY_YCtHVoSHBut69vrGfFdy1_
+   YKTZfFJv6BjrZsKD9b9FRzSBxDs1twTqnAS71M1RBumuihhI9xqxXKk
 ]]></artwork>
         </figure>
       </section>
@@ -285,17 +285,17 @@
           <t>
             After validating the Token Binding Message, the TTRP removes the
             <spanx style="verb">Sec-Token-Binding</spanx> header and adds the following
-            <spanx style="verb">Provided-Token-Binding-ID</spanx> and
-            <spanx style="verb">Referred-Token-Binding-ID</spanx> headers,
+            <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx> and
+            <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx> headers,
             with the provided and referred Token Binding IDs respectively,
             to the request that is dispatched to the backend server.
           </t>
           <figure title="Headers in HTTP Request to Backend Server" anchor="http-to-back-both">
             <artwork><![CDATA[
- Provided-Token-Binding-ID: AgBBQCfsI1D1sTq5mvT_2H_dihNIvuHJCHGjHPJc
-   hPavNbGrOo26-2JgT_IsbvZd4daDFbirYBIwJ-TK1rh8FzrC-ps
- Referred-Token-Binding-ID: AgBBQKzyIrmcY_YCtHVoSHBut69vrGfFdy1_YKTZ
-   fFJv6BjrZsKD9b9FRzSBxDs1twTqnAS71M1RBumuihhI9xqxXKk
+ Sec-Provided-Token-Binding-ID: AgBBQCfsI1D1sTq5mvT_2H_dihNIvuHJCHGj
+   HPJchPavNbGrOo26-2JgT_IsbvZd4daDFbirYBIwJ-TK1rh8FzrC-ps
+ Sec-Referred-Token-Binding-ID: AgBBQKzyIrmcY_YCtHVoSHBut69vrGfFdy1_
+   YKTZfFJv6BjrZsKD9b9FRzSBxDs1twTqnAS71M1RBumuihhI9xqxXKk
 ]]></artwork>
           </figure>
         </section>
@@ -340,6 +340,11 @@
         from the reverse proxy and the proxy can only make requests to that server. Other
         deployments that meet the requirements set forth herein are also possible.
       </t>
+      <t>
+        Employing the <spanx style="verb">Sec-</spanx> header field prefix for the headers
+        defined herein denotes them as forbidden header names (see <xref target="fetch-spec"/>),
+        which means they cannot be set or modified programmatically by script running in-browser.
+      </t>
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
@@ -353,7 +358,7 @@
       <?rfc subcompact="yes"?>
       <list style="symbols">
         <t>
-          Header Field Name: <spanx style="verb">Provided-Token-Binding-ID</spanx>
+          Header Field Name: <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx>
         </t>
         <t>
           Applicable protocol: HTTP
@@ -372,7 +377,7 @@
    <t>
       <list style="symbols">
         <t>
-          Header Field Name: <spanx style="verb">Referred-Token-Binding-ID</spanx>
+          Header Field Name: <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx>
         </t>
         <t>
           Applicable protocol: HTTP
@@ -409,6 +414,17 @@
 
    <references title="Informative References">
       <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3864"?>
+
+      <reference anchor="fetch-spec" target="https://fetch.spec.whatwg.org/">
+       <front>
+         <title>Fetch</title>
+         <author>
+           <organization>WhatWG</organization>
+         </author>
+         <date />
+       </front>
+       <seriesInfo name="Living Standard" value="" />
+      </reference>
    </references>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
@@ -417,6 +433,7 @@
         Vinod Anupam,
         Dirk Balfanz,
         John Bradley,
+        Nick Harper,
         Jeff Hodges,
         Subodh Iyengar,
         Leif Johansson,
@@ -435,6 +452,7 @@
       <t>
         draft-ietf-tokbind-ttrp-01
         <list style="symbols">
+          <t>Prefix the header names with "Sec-" so that they are denoted as forbidden header names by Fetch https://fetch.spec.whatwg.org/</t>
           <t>Removed potentially confusing sentence from Security Considerations per https://mailarchive.ietf.org/arch/msg/unbearable/O0IpppyyEqMrQjEkyEi8p8CeBGA</t>
           <t>Editorial fixes.</t>
         </list>
