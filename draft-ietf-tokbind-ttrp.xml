@@ -101,10 +101,13 @@
         systems as they will not always be applicable.
       </t>
       <section anchor="rnc" title="Requirements Notation and Conventions">
-	<t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-	"SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
-	document are to be interpreted as described in <xref
-	target="RFC2119">RFC 2119</xref>.</t>
+        <t>
+          The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+          "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",  "MAY", and "OPTIONAL"
+          in this document are to be interpreted as described in
+          BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/>
+          when, and only when, they appear in all capitals, as shown here.
+        </t>
       </section>
 
     </section>
@@ -406,6 +409,7 @@
       <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5246"?>
       <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5705"?>
       <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7230"?>
+      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174"?>
 
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-tokbind-negotiation-10.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-tokbind-protocol-16.xml' ?>
@@ -455,6 +459,7 @@
         <list style="symbols">
           <t>Add to the Acknowledgements.</t>
           <t>Update references for Token Binding negotiation, protocol, and https.</t>
+          <t>Use the boilerplate from RFC 8174.</t>
         </list>
       </t>
       <t>
