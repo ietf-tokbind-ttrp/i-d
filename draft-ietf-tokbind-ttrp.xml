@@ -114,6 +114,31 @@
 
     <section anchor="headers-and-rules" title="HTTP Header Fields and Processing Rules">
 
+      <section title="Encoding" anchor="encoding">
+        <t>
+          The field-values of the HTTP headers defined herein utilize the following encoded forms.
+        </t>
+        <t>
+          A Token Binding ID is represented as an <spanx style="verb">EncodedTokenBindingID</spanx>,
+          for which the ABNF <xref target="RFC5234"/> syntax is shown in <xref target="abnf"/> below.
+
+          <figure anchor="abnf" title="Encoded Token Binding ID Header ABNF">
+            <artwork><![CDATA[
+    EncodedTokenBindingID = *( DIGIT / ALPHA /  "-" / "_" )
+
+    DIGIT = <Defined in Section B.1 of [RFC5234]>
+    ALPHA = <Defined in Section B.1 of [RFC5234]>
+       ]]></artwork></figure>
+        </t>
+        <t>
+          The value of an <spanx style="verb">EncodedTokenBindingID</spanx> is a base64url encoding of
+          the TokenBindingID byte sequence (see section 3 of <xref target="I-D.ietf-tokbind-protocol"/>)
+          using the URL and filename safe alphabet described in Section 5 of
+          <xref target="RFC4648"/>, with all trailing pad characters '=' omitted
+          and without the inclusion of any line breaks, whitespace, or other
+          additional characters.
+        </t>
+      </section>
       <section anchor="headers" title="Token Binding ID HTTP Header Fields">
         <t>
           <xref target="I-D.ietf-tokbind-protocol">The Token Binding Protocol</xref>
@@ -121,31 +146,30 @@
           available to the application as opaque byte sequences, enabling those
           applications to use the Token Binding IDs when generating and verifying
           bound tokens. In the context of a TLS terminating reverse proxy (TTRP)
-          deployment, the provided and referred Token Binding IDs are made available
-          to the backend application as the <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx>
-          and <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx> HTTP headers respectively.
-          The value of both headers is an <spanx style="verb">EncodedTokenBindingID</spanx>, for which the
-          ABNF <xref target="RFC5234"/> syntax is shown in <xref target="abnf"/> below.
-          <spanx style="verb">EncodedTokenBindingID</spanx> is a single HTTP header field-value as defined in
+          deployment, the TTRP makes the Token Binding ID(s) available to the backend
+          application, when applicable, with the following header fields.
+
+          <list style="hanging">
+
+          <t hangText="Sec-Provided-Token-Binding-ID">
+            <vspace/>
+             The Token Binding ID of the provided Token Binding represented as an
+            <spanx style="verb">EncodedTokenBindingID</spanx> as defined in <xref target="encoding"/>.
+          </t>
+
+          <t hangText="Sec-Referred-Token-Binding-ID">
+            <vspace/>
+            The Token Binding ID of the referred Token Binding represented as an
+            <spanx style="verb">EncodedTokenBindingID</spanx> as defined in <xref target="encoding"/>.
+          </t>
+          </list>
+
+          Both <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx>
+          and <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx> are
+          single HTTP header field-valued as defined in
           Section 3.2 of <xref target="RFC7230"/>, which MUST NOT have a list of values or occur multiple times
           in a request. An <spanx style="verb">EncodedTokenBindingID</spanx> is only for use in HTTP requests
           and MUST NOT to be used in HTTP responses.
-        </t>
-        <figure anchor="abnf" title="Encoded Token Binding ID Header ABNF">
-          <artwork><![CDATA[
-    EncodedTokenBindingID = *( DIGIT / ALPHA /  "-" / "_" )
-
-    DIGIT = <Defined in Section B.1 of [RFC5234]>
-    ALPHA = <Defined in Section B.1 of [RFC5234]>
-       ]]></artwork></figure>
-        <t>
-          The value of an <spanx style="verb">EncodedTokenBindingID</spanx> is a base64url encoding of
-          the TokenBindingID byte sequence (see section 3 of <xref target="I-D.ietf-tokbind-protocol"/>)
-          using the URL and
-          filename safe alphabet described in Section 5 of
-          <xref target="RFC4648"/>, with all trailing pad characters '=' omitted
-          and without the inclusion of any line breaks, whitespace, or other
-          additional characters.
         </t>
       </section>
 
@@ -460,6 +484,8 @@
           <t>Add to the Acknowledgements.</t>
           <t>Update references for Token Binding negotiation, protocol, and https.</t>
           <t>Use the boilerplate from RFC 8174.</t>
+          <t>Reformat the "HTTP Header Fields and Processing Rules" section to make the
+            header names more prominent and move the encoding definitions earlier.</t>
         </list>
       </t>
       <t>
