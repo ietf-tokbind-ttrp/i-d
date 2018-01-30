@@ -35,9 +35,10 @@
 
     <abstract>
       <t>
-        This document defines common HTTP header fields that enable
-        a TLS terminating reverse proxy to convey information about the validated Token Binding Message
-        sent by the client to a backend server, which enables that backend server to bind, or verify the binding
+        This document defines HTTP header fields that enable
+        a TLS terminating reverse proxy to convey information to a backend server
+        about the validated Token Binding Message
+        received from a client, which enables that backend server to bind, or verify the binding
         of, cookies and other security tokens to the client's Token Binding key.
       </t>
     </abstract>
@@ -482,7 +483,7 @@
       <t>
         draft-ietf-tokbind-ttrp-03
         <list style="symbols">
-          <t></t>
+          <t>Reword the Abstract somewhat for (hopefully) improved readability.</t>
         </list>
       </t>
       <t>
