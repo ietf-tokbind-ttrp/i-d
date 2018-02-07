@@ -119,26 +119,39 @@
         <t>
           The field-values of the HTTP headers defined herein utilize the following encoded forms.
         </t>
+        <section title="Token Binding ID" anchor="EncodedTokenBindingID">
         <t>
           A Token Binding ID is represented as an <spanx style="verb">EncodedTokenBindingID</spanx>,
-          for which the ABNF <xref target="RFC5234"/> syntax is shown in <xref target="abnf"/> below.
-
-          <figure anchor="abnf" title="Encoded Token Binding ID Header ABNF">
-            <artwork><![CDATA[
-    EncodedTokenBindingID = *( DIGIT / ALPHA /  "-" / "_" )
-
-    DIGIT = <Defined in Section B.1 of [RFC5234]>
-    ALPHA = <Defined in Section B.1 of [RFC5234]>
-       ]]></artwork></figure>
-        </t>
-        <t>
-          The value of an <spanx style="verb">EncodedTokenBindingID</spanx> is a base64url encoding of
+          which is thea base64url encoding of
           the TokenBindingID byte sequence (see section 3 of <xref target="I-D.ietf-tokbind-protocol"/>)
           using the URL and filename safe alphabet described in Section 5 of
           <xref target="RFC4648"/>, with all trailing pad characters '=' omitted
           and without the inclusion of any line breaks, whitespace, or other
-          additional characters.
+          additional characters. ABNF <xref target="RFC5234"/> syntax for <spanx style="verb">EncodedTokenBindingID</spanx>
+          is shown in <xref target="id-abnf"/> below.
+          <figure anchor="id-abnf" title="Encoded Token Binding ID ABNF">
+            <artwork><![CDATA[
+  EncodedTokenBindingID = *( DIGIT / ALPHA /  "-" / "_" )
+
+  DIGIT = <Defined in Section B.1 of [RFC5234]>
+  ALPHA = <Defined in Section B.1 of [RFC5234]>
+       ]]></artwork></figure>
         </t>
+        </section>
+        <section title="Token Binding Type" anchor="EncodedTokenBindingType">
+        <t>
+          A Token Binding type can be represented as an <spanx style="verb">EncodedTokenBindingType</spanx>,
+          which is the base16 encoding (Section 8 of <xref target="RFC4648"/>) of the single TokenBindingType byte.
+          ABNF <xref target="RFC5234"/> syntax for <spanx style="verb">EncodedTokenBindingType</spanx>
+          is shown in <xref target="type-abnf"/> below.
+          <figure anchor="type-abnf" title="Encoded Token Binding Type ABNF">
+            <artwork><![CDATA[
+  EncodedTokenBindingType = 1*2( DIGIT /
+                                 "A" / "B" / "C" / "D" / "E" / "F" /
+                                 "a" / "b" / "c" / "d" / "e" / "f" )
+       ]]></artwork></figure>
+        </t>
+        </section>
       </section>
       <section anchor="headers" title="Token Binding ID HTTP Header Fields">
         <t>
@@ -155,13 +168,20 @@
           <t hangText="Sec-Provided-Token-Binding-ID">
             <vspace/>
              The Token Binding ID of the provided Token Binding represented as an
-            <spanx style="verb">EncodedTokenBindingID</spanx> as defined in <xref target="encoding"/>.
+            <spanx style="verb">EncodedTokenBindingID</spanx>.
           </t>
 
           <t hangText="Sec-Referred-Token-Binding-ID">
             <vspace/>
             The Token Binding ID of the referred Token Binding represented as an
-            <spanx style="verb">EncodedTokenBindingID</spanx> as defined in <xref target="encoding"/>.
+            <spanx style="verb">EncodedTokenBindingID</spanx>.
+          </t>
+
+          <t hangText="Sec-Other-Token-Binding-ID">
+            <vspace/>
+            Additional Token Bindings sent by the client and validated by the TTRP are represented as a comma-separated list
+            of the concatenation of the <spanx style="verb">EncodedTokenBindingType</spanx>, a period (".") character, and the <spanx style="verb">EncodedTokenBindingID</spanx>
+            of each additional Token Binding.
           </t>
           </list>
         </t>
@@ -170,7 +190,10 @@
           and <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx> are
           single HTTP header field-valued as defined in
           Section 3.2 of <xref target="RFC7230"/>, which MUST NOT have a list of values or occur multiple times
-          in a request. An <spanx style="verb">EncodedTokenBindingID</spanx> is only for use in HTTP requests
+          in a request.
+        </t>
+        <t>
+          All header fields defined herein are only for use in HTTP requests
           and MUST NOT to be used in HTTP responses.
         </t>
       </section>
@@ -220,25 +243,32 @@
               header field MUST NOT be present in the dispatched request.
             </t>
             <t>
-              Any occurrence of the <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx> or
-              <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx>
-              header in the original incoming request MUST be removed or overwritten before forwarding the request.
+              If the Token Binding Message contains any additional validated Token Bindings, they are placed in the
+              <spanx style="verb">Sec-Other-Token-Binding-ID</spanx> header field using the format defined
+              in <xref target="headers"/>. If the Token Binding Message contains no additional valid Token Bindings,
+              the <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx>
+              header field MUST NOT be present in the dispatched request.
+            </t>
+            <t>
+              Any occurrence of the <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx>,
+              <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx>, and <spanx style="verb">Sec-Other-Token-Binding-ID</spanx>
+              headers in the original incoming request MUST be removed or overwritten before forwarding the request.
             </t>
 
           </list>
 
-          Requests made over a TLS connection where the use of Token Binding was not negotiated MUST be sanitized
+          Requests made over a connection where the use of Token Binding was not negotiated MUST be sanitized
           by removing any occurrences of the
-          <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx>
-          and
-          <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx>
+          <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx>,
+          <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx>,
+          and <spanx style="verb">Sec-Other-Token-Binding-ID</spanx>
           header fields prior to
           dispatching the request to the backend server.
         </t>
         <t>
           Forward proxies and other intermediaries MUST NOT add
           the <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx>
-          or <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx> header to requests.
+          <spanx style="verb">Sec-Referred-Token-Binding-ID</spanx>, or <spanx style="verb">Sec-Other-Token-Binding-ID</spanx> header to requests.
         </t>
       </section>
       <section anchor="examples" title="Examples">
@@ -422,6 +452,25 @@
         </t>
       </list>
     </t>
+    <t>
+      <list style="symbols">
+        <t>
+          Header Field Name: <spanx style="verb">Sec-Other-Token-Binding-ID</spanx>
+        </t>
+        <t>
+          Applicable protocol: HTTP
+        </t>
+        <t>
+          Status: standard
+        </t>
+        <t>
+          Author/change Controller: IETF
+        </t>
+        <t>
+          Specification Document(s): [[ this specification ]]
+        </t>
+      </list>
+    </t>
       <?rfc subcompact="no"?>
     </section>
     </section>
@@ -468,6 +517,7 @@
         Jeff Hodges,
         Subodh Iyengar,
         Leif Johansson,
+        Michael B. Jones,
         Yoav Nir,
         Andrei Popov,
         Eric Rescorla,
@@ -483,6 +533,7 @@
       <t>
         draft-ietf-tokbind-ttrp-03
         <list style="symbols">
+          <t>Add a header to allow for additional token binding types other than provided and referred to be conveyed.</t>
           <t>Reword the Abstract somewhat for (hopefully) improved readability.</t>
         </list>
       </t>
