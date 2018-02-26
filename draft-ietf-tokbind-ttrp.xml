@@ -92,8 +92,8 @@
         This document standardizes
         HTTP header field names that a
         TLS terminating reverse proxy (TTRP) adds to requests that it sends to the backend servers.
-        The headers contain the information from the validated Token Binding Message
-        sent by the client to the proxy with the <spanx style="verb">Sec-Token-Binding</spanx> header,
+        The headers contain information from the validated Token Binding Message
+        sent by the client to the proxy,
         thus enabling the backend server to bind, or verify the binding of,
         cookies and other security tokens to the client's Token Binding key.
         The usage of the
