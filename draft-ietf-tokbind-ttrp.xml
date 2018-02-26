@@ -129,6 +129,8 @@
           and without the inclusion of any line breaks, whitespace, or other
           additional characters. ABNF <xref target="RFC5234"/> syntax for <spanx style="verb">EncodedTokenBindingID</spanx>
           is shown in <xref target="id-abnf"/> below.
+        </t>
+        <t>
           <figure anchor="id-abnf" title="Encoded Token Binding ID ABNF">
             <artwork><![CDATA[
   EncodedTokenBindingID = *( DIGIT / ALPHA /  "-" / "_" )
@@ -144,6 +146,8 @@
           which is the base16 encoding (Section 8 of <xref target="RFC4648"/>) of the single TokenBindingType byte.
           ABNF <xref target="RFC5234"/> syntax for <spanx style="verb">EncodedTokenBindingType</spanx>
           is shown in <xref target="type-abnf"/> below.
+        </t>
+        <t>
           <figure anchor="type-abnf" title="Encoded Token Binding Type ABNF">
             <artwork><![CDATA[
   EncodedTokenBindingType = 1*2( DIGIT /
