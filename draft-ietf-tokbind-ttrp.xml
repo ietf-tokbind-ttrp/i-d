@@ -208,7 +208,7 @@
           TLS terminating reverse proxy (TTRP) and backend server(s) to provide server side support of
           <xref target="I-D.ietf-tokbind-https">Token Binding over HTTP</xref>
           using the HTTP headers described in <xref target="headers"/>.
-          Use of the technique is to be a configuration or deployments option and
+          Use of the technique is to be a configuration or deployment option and
           the processing rules described herein are for servers operating with that option enabled.
         </t>
         <t>
