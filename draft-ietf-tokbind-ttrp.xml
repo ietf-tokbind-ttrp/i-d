@@ -165,7 +165,7 @@
           applications to use the Token Binding IDs when generating and verifying
           bound tokens. In the context of a TLS terminating reverse proxy (TTRP)
           deployment, the TTRP makes the Token Binding ID(s) available to the backend
-          application, when applicable, with the following header fields.
+          application with the following header fields.
         </t>
         <t>
           <list style="hanging">
