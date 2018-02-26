@@ -81,7 +81,7 @@
 
         In a deployment where TLS is terminated by a reverse proxy, however, the
         TLS connection is between the client and the proxy while the backend server is likely the
-        system that will issue cookies or other security tokens.
+        system that will issue and validate cookies or other security tokens.
 
         Additional steps are therefore needed to enable the use of
         Token Binding in such deployment architectures. In the absence of a standardized approach,
