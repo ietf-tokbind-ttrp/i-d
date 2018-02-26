@@ -541,6 +541,7 @@
         <list style="symbols">
           <t>Add a header to allow for additional token binding types other than provided and referred to be conveyed.</t>
           <t>Reword the Abstract somewhat for (hopefully) improved readability.</t>
+          <t>Minor editorial and formatting updates.</t>
         </list>
       </t>
       <t>
