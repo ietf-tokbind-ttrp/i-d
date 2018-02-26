@@ -218,7 +218,8 @@
           the underlying TLS connection. Requests with a valid Token Binding Message (and meeting
           any other authorization or policy requirements of the TTRP) are dispatched to the backend
           server with the following modifications.
-
+        </t>
+        <t>
           <list style="numbers">
             <t>
               The
@@ -256,7 +257,8 @@
             </t>
 
           </list>
-
+        </t>
+        <t>
           Requests made over a connection where the use of Token Binding was not negotiated MUST be sanitized
           by removing any occurrences of the
           <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx>,
