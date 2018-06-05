@@ -372,7 +372,7 @@
     <section anchor="Security" title="Security Considerations">
       <t>
         The headers described herein enable a reverse proxy and backend server
-        to function together as though they are single logical server side deployment of HTTPS Token Binding.
+        to function together as though they are a single logical server side deployment of HTTPS Token Binding.
         Use of the headers outside that intended use case, however, may undermine the protections
         afforded by Token Binding. Therefore steps MUST be taken to prevent unintended use, both in
         sending the headers and in relying on their value.
@@ -525,6 +525,7 @@
         Leif Johansson,
         Michael B. Jones,
         Yoav Nir,
+        James Manger,
         Andrei Popov,
         Eric Rescorla,
         Piotr Sikora,
@@ -539,7 +540,7 @@
       <t>
         draft-ietf-tokbind-ttrp-04
         <list style="symbols">
-          <t></t>
+          <t>Minor editorial fixes.</t>
         </list>
       </t>
       <t>
