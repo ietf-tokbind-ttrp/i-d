@@ -530,8 +530,8 @@
         Eric Rescorla,
         Piotr Sikora,
         Martin Thomson,
+        and
         Hans Zandbelt
-        and others (please let me know, if you've contributed and I've forgotten you).
       </t>
     </section>
 
@@ -541,7 +541,7 @@
         draft-ietf-tokbind-ttrp-04
         <list style="symbols">
           <t>Minor editorial fixes.</t>
-          <t>Add to the Acknowledgements.</t>
+          <t>Add to the Acknowledgements and remove the 'and others' bit.</t>
         </list>
       </t>
       <t>
