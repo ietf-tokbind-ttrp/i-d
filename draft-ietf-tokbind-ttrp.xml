@@ -292,7 +292,7 @@
           (The base64url-encoded representation of the exported keying material,
           which can be used to validate the Token Binding Message, for that
           connection is <spanx style="verb">AYVUayPTP9RmELNpGjFl6Ykm2CUx7pUMxe35yb11dgU</spanx>).
-          The encoded Token Binding Message has the provided Token Binding the
+          The encoded Token Binding Message has the provided Token Binding that the
           client uses with the server.
         </t>
 
@@ -331,7 +331,7 @@
             (The base64url-encoded representation of the exported keying material,
             which can be used to validate the Token Binding Message, for that
             connection is <spanx style="verb">wEWWCP1KPxfq-QL4NxYII_P4ti_9YYqrTpGs28BZEqE</spanx>).
-            The encoded Token Binding Message has the provided Token Binding the
+            The encoded Token Binding Message has the provided Token Binding that the
             client uses with the server as well as the referred Token Binding that it
             uses with a different server.
           </t>
@@ -361,6 +361,52 @@
    HPJchPavNbGrOo26-2JgT_IsbvZd4daDFbirYBIwJ-TK1rh8FzrC-ps
  Sec-Referred-Token-Binding-ID: AgBBQKzyIrmcY_YCtHVoSHBut69vrGfFdy1_
    YKTZfFJv6BjrZsKD9b9FRzSBxDs1twTqnAS71M1RBumuihhI9xqxXKk
+]]></artwork>
+          </figure>
+        </section>
+
+
+        <section anchor="example-other" title="Provided and Other  Token Binding IDs">
+
+          <t>
+            The following <spanx style="verb">Sec-Token-Binding</spanx> header is from
+            an HTTP request made over a TLS connection between the client
+            and the TTRP where the use of Token Binding has been negotiated
+            (The base64url-encoded representation of the exported keying material,
+            which can be used to validate the Token Binding Message, for that
+            connection is <spanx style="verb">Zr_1DESCcDoaltcZCK613UrEWHRf2B3w9i3bwcxpacc</spanx>).
+            The encoded Token Binding Message has the provided Token Binding and two other Token Bindings.
+          </t>
+
+          <figure title="Header in HTTP Request to TTRP" anchor="http-to-ttrp-other">
+            <artwork><![CDATA[
+ Sec-Token-Binding: AZsAAgBBQA35hcCjI5GEHLLAZ0i2l2ZvQe-bSPAP7jovkZJM
+  4wYHgmmXNd1aRpnQmXK9ghUmrdtS6p_e2uSlMXIVKOIwgysAQJ-TKyVGF37XUXMy79
+  ybwJyPpfCG9Iq6fdIxLX_yJn-L__Z3p_WIL3g17K0OH3XZmJS3qZNNEVu_8HmPN-d9
+  hGMAAE0CAEFAR68GbdIQyrHqkorJF0sekYJvf8iV03obGxbaWbqAEJetsYxprB6c3M
+  x5KDHBGZjsFbeFW5Xec_EaxX0Hw3RmJwBA-Fu22kokRbB7G0D0g6_sdCHTbczSCmnm
+  6rqP1x7kRIIj_kJNCCWcwMMFzbsBTXcm5fJrRdBTcsqiiqYD6aJ1SgAACwIAQUCDqt
+  6m63By8b1lvhN-n9OsQThoLomzKpMicSZGwR166jplhbkjrFsHzdNqzLFFEhCT9s0p
+  XrcbpOHsZnpRSkmhAEBfOwxjK3Y9EOeMrqjo0IUhmurW2EgtSRBjDwc0r-rDT231Zv
+  _f1oePB8Pkd1kgAtgKX5EDiemfo1YER3_I2cv3AAA
+]]></artwork>
+          </figure>
+
+          <t>
+            After validating the Token Binding Message, the TTRP removes the
+            <spanx style="verb">Sec-Token-Binding</spanx> header and adds the following
+            <spanx style="verb">Sec-Provided-Token-Binding-ID</spanx> and
+            <spanx style="verb">Sec-Other-Token-Binding-ID</spanx> headers
+            to the request that is dispatched to the backend server.
+          </t>
+          <figure title="Headers in HTTP Request to Backend Server" anchor="http-to-back-other">
+            <artwork><![CDATA[
+ Sec-Provided-Token-Binding-ID: AgBBQA35hcCjI5GEHLLAZ0i2l2ZvQe-bSPAP
+   7jovkZJM4wYHgmmXNd1aRpnQmXK9ghUmrdtS6p_e2uSlMXIVKOIwgys
+ Sec-Other-Token-Binding-ID: 4d.AgBBQEevBm3SEMqx6pKKyRdLHpGCb3_IldN6
+   GxsW2lm6gBCXrbGMaawenNzMeSgxwRmY7BW3hVuV3nPxGsV9B8N0Zic,b.AgBBQIO
+   q3qbrcHLxvWW-E36f06xBOGguibMqkyJxJkbBHXrqOmWFuSOsWwfN02rMsUUSEJP2
+   zSletxuk4exmelFKSaE
 ]]></artwork>
           </figure>
         </section>
@@ -540,6 +586,7 @@
       <t>
         draft-ietf-tokbind-ttrp-04
         <list style="symbols">
+          <t>Add an example with Sec-Other-Token-Binding-ID.</t>
           <t>Minor editorial fixes.</t>
           <t>Add to the Acknowledgements and remove the 'and others' bit.</t>
         </list>
