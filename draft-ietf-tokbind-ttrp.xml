@@ -40,6 +40,9 @@
         about the validated Token Binding Message
         received from a client, which enables that backend server to bind, or verify the binding
         of, cookies and other security tokens to the client's Token Binding key.
+        This facilitates the reverse proxy and backend
+        server functioning together as though they are a single logical
+        server side deployment of HTTPS Token Binding.
       </t>
     </abstract>
   </front>
