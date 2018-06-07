@@ -145,7 +145,7 @@
         <section title="Token Binding Type" anchor="EncodedTokenBindingType">
         <t>
           A Token Binding type value (a single byte) can be represented as an <spanx style="verb">EncodedTokenBindingType</spanx>,
-          which is a case-insensitive hex (Section 8 of <xref target="RFC4648"/>) encoding.
+          which is a case-insensitive hex encoding (Section 8 of <xref target="RFC4648"/>).
           The ABNF definition is shown in <xref target="type-abnf"/> below.
         </t>
         <t>
@@ -289,10 +289,10 @@
         <t>
           The following <spanx style="verb">Sec-Token-Binding</spanx> header is from
           an HTTP request made over a TLS connection between the client
-          and the TTRP where the use of Token Binding has been negotiated
-          (The base64url-encoded representation of the exported keying material,
-          which can be used to validate the Token Binding Message, for that
-          connection is <spanx style="verb">AYVUayPTP9RmELNpGjFl6Ykm2CUx7pUMxe35yb11dgU</spanx>).
+          and the TTRP where the use of Token Binding has been negotiated.
+          The base64url-encoded representation of the exported keying material for that
+          connection is <spanx style="verb">AYVUayPTP9RmELNpGjFl6Ykm2CUx7pUMxe35yb11dgU</spanx>,
+          which can be used to validate the Token Binding Message.
           The encoded Token Binding Message has the provided Token Binding that the
           client uses with the server.
         </t>
@@ -328,10 +328,10 @@
           <t>
             The following <spanx style="verb">Sec-Token-Binding</spanx> header is from
             an HTTP request made over a TLS connection between the client
-            and the TTRP where the use of Token Binding has been negotiated
-            (The base64url-encoded representation of the exported keying material,
-            which can be used to validate the Token Binding Message, for that
-            connection is <spanx style="verb">wEWWCP1KPxfq-QL4NxYII_P4ti_9YYqrTpGs28BZEqE</spanx>).
+            and the TTRP where the use of Token Binding has been negotiated.
+            The base64url-encoded representation of the exported keying material for that
+            connection is <spanx style="verb">wEWWCP1KPxfq-QL4NxYII_P4ti_9YYqrTpGs28BZEqE</spanx>,
+            which can be used to validate the Token Binding Message.
             The encoded Token Binding Message has the provided Token Binding that the
             client uses with the server as well as the referred Token Binding that it
             uses with a different server.
@@ -372,10 +372,10 @@
           <t>
             The following <spanx style="verb">Sec-Token-Binding</spanx> header is from
             an HTTP request made over a TLS connection between the client
-            and the TTRP where the use of Token Binding has been negotiated
-            (The base64url-encoded representation of the exported keying material,
-            which can be used to validate the Token Binding Message, for that
-            connection is <spanx style="verb">Zr_1DESCcDoaltcZCK613UrEWHRf2B3w9i3bwcxpacc</spanx>).
+            and the TTRP where the use of Token Binding has been negotiated.
+            The base64url-encoded representation of the exported keying material for that
+            connection is <spanx style="verb">Zr_1DESCcDoaltcZCK613UrEWHRf2B3w9i3bwcxpacc</spanx>,
+            which can be used to validate the Token Binding Message.
             The encoded Token Binding Message has the provided Token Binding and two other Token Bindings.
           </t>
 
