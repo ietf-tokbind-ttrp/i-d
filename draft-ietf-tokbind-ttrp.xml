@@ -588,6 +588,7 @@
         draft-ietf-tokbind-ttrp-05
         <list style="symbols">
           <t>Editorial updates.</t>
+          <t>Change one character in the last example to help emphasize the case-insensitivity of hex.</t>
         </list>
       </t>
       <t>
