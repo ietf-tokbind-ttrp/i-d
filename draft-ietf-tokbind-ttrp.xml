@@ -69,13 +69,16 @@
       </t>
       <t>
         A fairly common deployment architecture for HTTPS applications is to have the backend HTTP application
-        servers sit behind a reverse proxy that terminates TLS. The proxy is accessible to the internet and
+        servers sit behind a reverse proxy that terminates TLS connections from clients.
+        The proxy is accessible to the internet and
         dispatches client requests to the appropriate backend server within a private or protected network.
-        The backend servers are not directly accessible outside the private network and are only reachable
+        The backend servers are not directly accessible by clients and are only reachable
         through the reverse proxy. The details of such deployments are typically opaque to clients
         who make requests to the proxy server and see responses as though they originated
-        from the proxy server itself. TLS connections for HTTPS are established between
-        each client and the reverse proxy server.
+        from the proxy server itself.
+        Although HTTPS is also usually employed between the proxy and the backend server,
+        the TLS connection that the client establishes for HTTPS is between
+        itself and the reverse proxy server.
       </t>
       <t>
         Token Binding facilitates a binding of security tokens to a key held by the client by way of
