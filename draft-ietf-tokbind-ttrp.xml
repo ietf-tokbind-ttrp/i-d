@@ -187,7 +187,7 @@
 
           <t hangText="Sec-Other-Token-Binding-ID">
             <vspace/>
-            Additional Token Bindings, other than provided and referred, that are sent by the client and validated by the TTRP are represented as a comma-separated list
+            Additional Token Bindings that are sent by the client and validated by the TTRP are represented as a comma-separated list
             of the concatenation of the <spanx style="verb">EncodedTokenBindingType</spanx>, a period (".") character, and the <spanx style="verb">EncodedTokenBindingID</spanx>
             of each.
           </t>
