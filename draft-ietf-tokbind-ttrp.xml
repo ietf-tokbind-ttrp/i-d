@@ -419,8 +419,22 @@
       </section>
     </section>
 
+    <section anchor="TLSV" title="TLS Versions and Best Practices">
+      <t>
+        <xref target="RFC5246">TLS 1.2</xref> is cited in this document because,
+        at the time of writing, it is the latest version that is widely deployed.
+        However, this document is applicable with other TLS versions that allow for
+        negotiating the use of Token Binding. <xref target="I-D.ietf-tokbind-tls13"/>,
+        for example, describes Token Binding for <xref target="I-D.ietf-tls-tls13">TLS 1.3</xref>.
+        Implementation security considerations for TLS, including version recommendations,
+        can be found in
+        <xref target="BCP195">Recommendations for Secure Use of Transport Layer Security (TLS)
+          and Datagram Transport Layer Security (DTLS)</xref>.
+      </t>
+    </section>
+
+
     <section anchor="Security" title="Security Considerations">
-      <section title="HTTP Headers">
       <t>
         The headers described herein enable a reverse proxy and backend server
         to function together as though they are a single logical server side deployment of HTTPS Token Binding.
@@ -461,21 +475,6 @@
         defined herein denotes them as forbidden header names (see <xref target="fetch-spec"/>),
         which means they cannot be set or modified programmatically by script running in-browser.
       </t>
-      </section>
-
-      <section anchor="TLSV" title="TLS Versions and Best Practices">
-        <t>
-            <xref target="RFC5246">TLS 1.2</xref> is cited in this document because,
-            at the time of writing, it is the latest version that is widely deployed.
-            However, this document is applicable with other TLS versions that allow for
-            negotiating the use of Token Binding. <xref target="I-D.ietf-tokbind-tls13"/>,
-            for example, describes Token Binding for <xref target="I-D.ietf-tls-tls13">TLS 1.3</xref>.
-            Implementation security considerations for TLS, including version recommendations,
-            can be found in
-            <xref target="BCP195">Recommendations for Secure Use of Transport Layer Security (TLS)
-                and Datagram Transport Layer Security (DTLS)</xref>.
-        </t>
-      </section>
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
