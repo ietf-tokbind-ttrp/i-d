@@ -635,7 +635,7 @@
       <t>
         draft-ietf-tokbind-ttrp-06
         <list style="symbols">
-          <t></t>
+          <t>Move TLS Versions and Best Practices out of Security Considerations to its own top-level section.</t>
         </list>
       </t>
       <t>
